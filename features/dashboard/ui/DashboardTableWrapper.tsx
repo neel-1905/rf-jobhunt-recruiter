@@ -8,6 +8,7 @@ import {
   DataLayoutContent,
   DataLayoutPagination,
 } from "@/shared/components/layout/data/DataLayout";
+import { FilterConfig } from "@/features/filters/domain/filter.types";
 
 const DashboardTableWrapper = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -18,9 +19,27 @@ const DashboardTableWrapper = () => {
     // TODO: Fetch data from backend for the new page
   };
 
+  const filters: FilterConfig[] = [
+    {
+      type: "multi-select",
+      label: "Status",
+      name: "status",
+      options: [
+        { value: "Active", label: "Active" },
+        { value: "Inactive", label: "Inactive" },
+        { value: "Draft", label: "Draft" },
+        { value: "Archived", label: "Archived" },
+        { value: "Pending", label: "Pending" },
+        { value: "Rejected", label: "Rejected" },
+        { value: "Approved", label: "Approved" },
+        { value: "Published", label: "Published" },
+      ],
+    },
+  ];
+
   return (
     <DataLayoutRoot>
-      <DataLayoutFilters />
+      <DataLayoutFilters filters={filters} />
       <DataLayoutContent>
         <JobsTable />
       </DataLayoutContent>
