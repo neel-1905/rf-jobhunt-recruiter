@@ -3,15 +3,16 @@
 import { Suspense } from "react";
 import DataTableFiltersBar from "./DataTableFiltersBar";
 import { Pagination, PaginationText } from "./Pagination";
+import { FilterConfig } from "@/features/filters/domain/filter.types";
 
 export function DataLayoutRoot({ children }: { children: React.ReactNode }) {
   return <div className="space-y-5 w-full">{children}</div>;
 }
 
-export function DataLayoutFilters() {
+export function DataLayoutFilters({ filters }: { filters: FilterConfig[] }) {
   return (
     <div className="w-full bg-background rounded-primary p-4 border">
-      <DataTableFiltersBar />
+      <DataTableFiltersBar filters={filters} />
     </div>
   );
 }

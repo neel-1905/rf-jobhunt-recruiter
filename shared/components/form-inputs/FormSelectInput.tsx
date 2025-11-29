@@ -2,12 +2,13 @@ import React from "react";
 import { FieldValues, Path, UseFormReturn } from "react-hook-form";
 import { FormControl, FormField, FormItem, FormMessage } from "../ui/form";
 import { Select } from "../inputs";
+import { OPTION } from "@/shared/types";
 
 type FormSelectInputProps<TFieldValues extends FieldValues = FieldValues> = {
   label: string;
   name: Path<TFieldValues>;
   form: UseFormReturn<TFieldValues>;
-  options: { value: string; label: string }[];
+  options: OPTION[];
   onSearch?: (query: string) => void;
 };
 

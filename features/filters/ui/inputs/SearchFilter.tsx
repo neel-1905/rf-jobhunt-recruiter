@@ -6,10 +6,11 @@ type SearchFilterProps = {
   className?: string;
   inputClassName?: string;
   placeholder?: string;
+  onChange?: (value: string) => void;
 };
 
 const SearchFilter = (props: SearchFilterProps) => {
-  const { value, className, inputClassName, placeholder } = props;
+  const { value, className, inputClassName, placeholder, onChange } = props;
   return (
     <div
       className={cn(
@@ -21,7 +22,7 @@ const SearchFilter = (props: SearchFilterProps) => {
       <input
         type="text"
         placeholder={placeholder}
-        onChange={() => {}}
+        onChange={(e) => onChange?.(e.target.value)}
         value={value}
         className={cn("border-none outline-0 text-xs w-full", inputClassName)}
       />

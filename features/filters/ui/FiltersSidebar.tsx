@@ -8,13 +8,19 @@ import {
   SheetTrigger,
 } from "@/shared/components/ui/sheet";
 import FiltersRenderer from "./FiltersRenderer";
+import { FilterConfig } from "../domain/filter.types";
 
 type FiltersSidebarProps = {
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
+  filters: FilterConfig[];
 };
 
-const FiltersSidebar = ({ isOpen, setIsOpen }: FiltersSidebarProps) => {
+const FiltersSidebar = ({
+  isOpen,
+  setIsOpen,
+  filters,
+}: FiltersSidebarProps) => {
   return (
     <>
       <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -26,7 +32,7 @@ const FiltersSidebar = ({ isOpen, setIsOpen }: FiltersSidebarProps) => {
             <SheetTitle className="text-[22px] font-medium">Filters</SheetTitle>
           </SheetHeader>
 
-          <FiltersRenderer />
+          <FiltersRenderer filters={filters} />
         </SheetContent>
       </Sheet>
     </>
