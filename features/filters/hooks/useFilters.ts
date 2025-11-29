@@ -5,9 +5,8 @@ import {
   parseAsString,
   parseAsInteger,
   parseAsArrayOf,
+  debounce,
 } from "nuqs";
-
-import { useDebounce } from "@/shared/hooks/useDebounce";
 
 export function useFilters<T extends Record<string, any>>(config: T) {
   const filters: any = {};
@@ -36,32 +35,34 @@ export function useFilters<T extends Record<string, any>>(config: T) {
 
     const [value, setValue] = useQueryState(key, parser);
 
-    // Coerce null → default
     const safeValue = value ?? def.default;
-
     filters[key] = safeValue;
-    set[key] = setValue;
 
-    // Array fields get a toggle function
+    // ⭐ WRAP THE SETTER TO ADD OPTIONAL DEBOUNCE
+    set[key] = (val: any) => {
+      // No debounce → update immediately
+      if (!def.debounce) {
+        setValue(val);
+        return;
+      }
+
+      // Debounced URL updates
+      setValue(val, {
+        limitUrlUpdates: debounce(def.debounce),
+      });
+    };
+
+    // ⭐ For array filters → toggle logic
     if (def.type === "array") {
       toggle[key] = (item: string) => {
-        const current = safeValue; // always array, never null
+        const arr: string[] = safeValue;
 
-        setValue(
-          current.includes(item)
-            ? current.filter((v: string) => v !== item)
-            : [...current, item]
-        );
+        const next = arr.includes(item)
+          ? arr.filter((v) => v !== item)
+          : [...arr, item];
+
+        set[key](next);
       };
-    }
-  });
-
-  // Handle debounced fields
-  const debounced: any = {};
-  Object.keys(filters).forEach((key) => {
-    if (config[key].debounce) {
-      const [debouncedValue] = useDebounce(filters[key], config[key].debounce);
-      debounced[key] = debouncedValue;
     }
   });
 
@@ -72,10 +73,9 @@ export function useFilters<T extends Record<string, any>>(config: T) {
   };
 
   return {
-    filters, // always non-null final values
+    filters,
     set,
     toggle,
     reset,
-    debounced,
   };
 }

@@ -1,7 +1,19 @@
-import MultiSelectFilter from "./inputs/MultiSelectFilter";
+"use client";
+
+import { useFilters } from "@/features/filters/hooks/useFilters";
 import { FilterConfig } from "../domain/filter.types";
+import MultiSelectFilter from "./inputs/MultiSelectFilter";
+
+const jobFiltersConfig = {
+  status: {
+    type: "array",
+    default: [],
+  },
+};
 
 const FiltersRenderer = (props: { filters: FilterConfig[] }) => {
+  const { filters: selected, set, toggle } = useFilters(jobFiltersConfig);
+
   return (
     <div className="flex flex-col gap-5">
       {props.filters.map((filter) => {
@@ -13,7 +25,8 @@ const FiltersRenderer = (props: { filters: FilterConfig[] }) => {
                 label={filter.label}
                 name={filter.name}
                 options={filter.options}
-                defaultSelected={filter.defaultSelected}
+                selectedValues={selected[filter.name]} // ← FROM URL
+                onSaveValues={(newValues) => set[filter.name](newValues)} // SAVE TO URL
               />
             );
         }
