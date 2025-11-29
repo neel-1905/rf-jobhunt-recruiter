@@ -1,23 +1,18 @@
 import DashboardCta from "@/features/dashboard/ui/DashboardCta";
 import DashboardStats from "@/features/dashboard/ui/DashboardStats";
 import DashboardTableWrapper from "@/features/dashboard/ui/DashboardTableWrapper";
+import { AppHeader } from "@/shared/components/layout";
 
 // DashboardPage.tsx
 const DashboardPage = () => {
   return (
-    <div className="size-full overflow-auto space-y-5 gap-5">
-      <div className="flex-between flex-wrap gap-3">
-        <span className="text-base font-medium text-muted-foreground">
-          Manage your recruitment pipeline
-        </span>
-
+    <>
+      <AppHeader title="Dashboard" subtitle="Manage your recruitment pipeline">
         <DashboardCta />
-      </div>
-
+      </AppHeader>
       <DashboardStats />
-
       <DashboardTableWrapper />
-    </div>
+    </>
   );
 };
 

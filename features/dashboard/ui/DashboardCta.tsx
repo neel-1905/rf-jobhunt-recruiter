@@ -1,6 +1,6 @@
+"use client";
 import { PrimaryButton } from "@/shared/components/buttons";
 import { PlusIcon } from "@/shared/icons";
-import React from "react";
 
 const DashboardCta = () => {
   return (
