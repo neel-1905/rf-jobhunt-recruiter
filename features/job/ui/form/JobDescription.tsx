@@ -5,7 +5,7 @@ const JobDescription = () => {
   const form = useFormContext<JobFormSchema>();
 
   return (
-    <section className="form-section">
+    <section className="app-section">
       <h1>Job Description</h1>
     </section>
   );

@@ -5,6 +5,11 @@ export const formatToMMDDYYYY = (date: string) => {
   return format(newDate, "MM/dd/yyyy");
 };
 
+export const formatToDDMMMMYYYY = (date: string) => {
+  const newDate = new Date(date);
+  return format(newDate, "dd MMMM yyyy");
+};
+
 export const formatToHHMMA = (date: string) => {
   const newDate = new Date(date);
   return format(newDate, "hh:mm a");

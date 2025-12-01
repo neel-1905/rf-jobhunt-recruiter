@@ -9,7 +9,7 @@ const JobRecruiter = () => {
   const form = useFormContext<JobFormSchema>();
 
   return (
-    <section className="form-section">
+    <section className="app-section">
       <h1>Recruiter Contact</h1>
 
       <div className="form-grid mb-5">

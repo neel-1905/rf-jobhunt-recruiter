@@ -7,7 +7,7 @@ const JobRequirements = () => {
   const form = useFormContext<JobFormSchema>();
 
   return (
-    <section className="form-section">
+    <section className="app-section">
       <h1>Job Requirements</h1>
 
       <div className="form-grid">
