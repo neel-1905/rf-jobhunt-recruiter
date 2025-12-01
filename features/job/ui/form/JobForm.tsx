@@ -9,7 +9,6 @@ import SalaryInformation from "./SalaryInformation";
 import JobRecruiter from "./JobRecruiter";
 import { PrimaryButtonWithLoading } from "@/shared/components/buttons/PrimaryButton";
 import { PrimaryOutlineButtonWithLoading } from "@/shared/components/buttons/PrimaryOutlineButton";
-import { zodDeepPartial } from "zod-deep-partial";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ClockIcon } from "@/shared/icons";
 
@@ -58,8 +57,6 @@ const JobForm = ({
     },
   });
 
-  const handlePublish = async () => {};
-
   const handleSaveDraft = () => {};
 
   return (
@@ -78,11 +75,7 @@ const JobForm = ({
               <h1>Publishing Options</h1>
 
               <div className="flex gap-5">
-                <PrimaryButtonWithLoading
-                  className="w-51"
-                  type="submit"
-                  onClick={handlePublish}
-                >
+                <PrimaryButtonWithLoading className="w-51" type="submit">
                   Publish
                 </PrimaryButtonWithLoading>
 
