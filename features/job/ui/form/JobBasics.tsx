@@ -38,7 +38,7 @@ const JobBasics = () => {
   ];
 
   return (
-    <section className="form-section">
+    <section className="app-section">
       <h1>Job Basics</h1>
 
       <div className="gap-y-5">

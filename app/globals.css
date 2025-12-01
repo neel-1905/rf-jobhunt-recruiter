@@ -21,6 +21,7 @@
   --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
+  --muted-foreground-secondary: oklch(0.4202 0 0);
   --accent: oklch(0.97 0 0);
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
@@ -68,6 +69,7 @@
   --secondary-foreground: oklch(0.21 0.006 285.885);
   --muted: oklch(0.967 0.001 286.375);
   --muted-foreground: oklch(0.552 0.016 285.938);
+  --muted-foreground-secondary: oklch(0.4202 0 0);
   --accent: oklch(96.722% 0.01625 12.399);
   --accent-foreground: oklch(0.21 0.006 285.885);
   --destructive: oklch(0.577 0.245 27.325);
@@ -116,6 +118,7 @@
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
+  --color-muted-foreground-secondary: var(--muted-foreground-secondary);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
   --color-destructive: var(--destructive);
@@ -202,6 +205,14 @@
   @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5;
 }
 
+@utility content-container {
+  @apply w-full bg-background rounded-primary p-10;
+}
+
+@utility paragraph {
+  @apply text-sm/5.5 text-muted-foreground-secondary;
+}
+
 @layer base {
   * {
     @apply border-border scrollbar-thin scrollbar-thumb-primary/50 scrollbar-track-transparent;
@@ -283,9 +294,17 @@
     }
   }
 
-  .form-section {
+  .app-section {
     h1 {
       @apply text-xl font-medium text-foreground/80 mb-6;
+    }
+
+    h2 {
+      @apply text-lg font-medium mb-4;
+    }
+
+    h3 {
+      @apply text-sm font-medium mb-4;
     }
   }
 
@@ -298,6 +317,80 @@
 
     &[data-selected="false"] {
       @apply bg-background text-primary;
+    }
+  }
+
+  .details-section {
+    @apply bg-background rounded-primary;
+
+    .details-grid {
+      @apply grid sm:grid-cols-2 lg:grid-cols-3 2lg:grid-cols-4 xl:grid-cols-5 gap-y-10 gap-x-7 p-7.5;
+    }
+
+    .details {
+      @apply flex flex-col gap-2.5;
+
+      h2 {
+        @apply text-xsm text-muted-foreground truncate;
+      }
+
+      h3 {
+        @apply text-sm truncate;
+      }
+    }
+  }
+
+  .note {
+    @apply space-y-5 pt-5 pb-5 first:pt-0 last:pb-0;
+
+    .content {
+      @apply flex flex-col gap-3;
+
+      p {
+        @apply text-xsm/5 text-muted-foreground italic;
+      }
+
+      .author {
+        @apply font-medium text-xsm;
+      }
+
+      .date {
+        @apply text-xs text-muted-foreground;
+      }
+    }
+
+    .actions {
+      @apply flex gap-3.5;
+
+      button {
+        @apply h-8 w-21;
+      }
+    }
+  }
+
+  .rich-content {
+    @apply text-foreground text-sm;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      @apply leading-[1em] mb-5 p-0;
+    }
+
+    ul {
+      @apply mb-7.5 list-disc! px-5;
+
+      li {
+        @apply leading-6 text-muted-foreground-secondary;
+      }
+    }
+
+    /* Remove unwanted spacing on last elements */
+    & > :last-child {
+      @apply mb-0;
     }
   }
 }

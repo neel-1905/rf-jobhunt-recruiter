@@ -25,7 +25,7 @@ const JobSkills = () => {
   };
 
   return (
-    <section className="form-section">
+    <section className="app-section">
       <h1>Skills</h1>
 
       <Select.Root

@@ -74,7 +74,7 @@ const JobForm = ({
             <SalaryInformation />
             <JobRecruiter />
 
-            <section className="form-section">
+            <section className="app-section">
               <h1>Publishing Options</h1>
 
               <div className="flex gap-5">

@@ -1,3 +1,4 @@
+import { formatToDDMMMMYYYY, formatToHHMMA } from "@/shared/lib/date.utils";
 import { JOB } from "../domain/job.types";
 
 export const data: JOB[] = [
@@ -102,3 +103,42 @@ export const data: JOB[] = [
     postedDate: "2024-01-22T09:15:00",
   },
 ];
+
+export const jobDetails = {
+  "Job Title": "Senior Chef",
+  Department: "Food and Safety",
+  "Employment Type": "Permanent",
+  "Work Setting": "Onsite",
+  "Posted Date & Time": `${formatToDDMMMMYYYY(
+    "2024-01-15T09:30:00"
+  )}, ${formatToHHMMA("2024-01-15T09:30:00")}`,
+  Status: "Active",
+  Recruiter: "Sumit Kumar - 199022",
+  "Recruiter Contact": "sumit.kumar@cardekho.com",
+};
+
+export const htmlString = `
+<h2>Menu Planning &amp; Food Preparation</h2>
+<ul>
+  <li>Develop innovative, seasonal, and cost-effective menus.</li>
+  <li>Prepare and cook a wide range of dishes with consistency and high quality.</li>
+  <li>Ensure all food items are prepared according to recipes and presentation standards.</li>
+  <li>Introduce new dishes and upgrade existing menu items based on customer preferences.</li>
+</ul>
+
+<h2>Kitchen Operations &amp; Management</h2>
+<ul>
+  <li>Oversee daily kitchen activities, including food preparation and cooking processes.</li>
+  <li>Maintain inventory levels, place orders, and manage supplier relationships.</li>
+  <li>Ensure proper storage and labeling of ingredients and prepared items.</li>
+  <li>Monitor food costs and minimize wastage through effective portion control.</li>
+</ul>
+
+<h2>Quality, Hygiene &amp; Safety Compliance</h2>
+<ul>
+  <li>Ensure the kitchen meets all health, hygiene, and food safety regulations.</li>
+  <li>Maintain cleanliness and organization in all kitchen areas.</li>
+  <li>Conduct routine inspections of equipment and ensure timely maintenance or repairs.</li>
+  <li>Uphold consistent quality control for all dishes leaving the kitchen.</li>
+</ul>
+`;

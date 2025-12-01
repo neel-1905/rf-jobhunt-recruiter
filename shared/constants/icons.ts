@@ -21,4 +21,5 @@ export const ICONS = {
   export: "/icons/export.svg",
   chevronDown: "/icons/chevronDown.svg",
   clock: "/icons/clock.svg",
+  cash: "/icons/cash.svg",
 };

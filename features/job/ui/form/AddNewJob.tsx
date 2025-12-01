@@ -13,7 +13,7 @@ const AddNewJob = () => {
   };
 
   return (
-    <div className="bg-background rounded-primary px-10 py-11.5">
+    <div className="content-container">
       <JobForm onSubmit={onSubmit} onSaveDraft={handleSaveDraft} />
     </div>
   );
