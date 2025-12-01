@@ -11,7 +11,12 @@ interface SelectInputProps {
   placeholder?: string;
 }
 
-const SelectInput = ({ className, label, onSearch }: SelectInputProps) => {
+const SelectInput = ({
+  className,
+  label,
+  onSearch,
+  placeholder = " ",
+}: SelectInputProps) => {
   const { name, setIsOpen, isOpen, setInputValue, inputValue } =
     useSelectContext();
 
@@ -33,7 +38,7 @@ const SelectInput = ({ className, label, onSearch }: SelectInputProps) => {
       <input
         id={name}
         type="text"
-        placeholder=" "
+        placeholder={placeholder}
         value={inputValue}
         onChange={handleInputChange}
         onFocus={() => setIsOpen(true)}

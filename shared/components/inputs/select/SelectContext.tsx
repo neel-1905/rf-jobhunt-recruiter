@@ -1,24 +1,21 @@
+import { OPTION } from "@/shared/types";
 import { createContext, CSSProperties, useContext } from "react";
-
-export interface SelectOption {
-  value: string;
-  label: string;
-}
 
 interface SelectContextType {
   isOpen: boolean;
   setIsOpen: (open: boolean) => void;
   selectedValue: string | null;
-  setSelectedValue: (value: string | null) => void;
+  setSelectedValue: (option: OPTION) => void;
   name: string;
   refs: any;
   floatingStyles: CSSProperties;
   value?: string | null;
   inputValue: string;
   setInputValue: (value: string) => void;
-  options: SelectOption[];
+  options: OPTION[];
   getReferenceProps: () => any;
   getFloatingProps: () => any;
+  clear: () => void;
 }
 
 const SelectContext = createContext<SelectContextType | null>(null);

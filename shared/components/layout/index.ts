@@ -8,3 +8,4 @@ export { default as CheckboxColumnHeader } from "./data/CheckboxColumnHeader";
 export { default as CheckboxColumnCell } from "./data/CheckboxColumnCell";
 export { default as DataTableFiltersBar } from "./data/DataTableFiltersBar";
 export { default as StatusCell } from "./data/StatusCell";
+export { default as FormSectionHeading } from "./FormSectionHeading";

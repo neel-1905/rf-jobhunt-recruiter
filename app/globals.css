@@ -198,6 +198,10 @@
   @apply p-4! text-xsm;
 }
 
+@utility form-grid {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5;
+}
+
 @layer base {
   * {
     @apply border-border scrollbar-thin scrollbar-thumb-primary/50 scrollbar-track-transparent;
@@ -253,7 +257,7 @@
   }
 
   .app-header {
-    @apply sticky top-0 w-full bg-page-bg pt-5 pb-5 z-20 flex-between;
+    @apply sticky top-0 w-full bg-page-bg pt-7.5 pb-5 z-20 flex-between;
 
     h1 {
       @apply text-2xl font-medium;
@@ -276,6 +280,12 @@
 
     span {
       @apply text-xs font-medium data-[status=positive]:text-success data-[status=negative]:text-destructive;
+    }
+  }
+
+  .form-section {
+    h1 {
+      @apply text-xl font-medium text-foreground/80 mb-6;
     }
   }
 }

@@ -12,23 +12,21 @@ import {
   useFloating,
   useInteractions,
 } from "@floating-ui/react";
-import { useClickOutside } from "@/shared/hooks/useClickOutside";
-import SelectContext, {
-  SelectOption as SelectOptionType,
-} from "./SelectContext";
+import SelectContext from "./SelectContext";
 import SelectTrigger from "./SelectTrigger";
 import SelectInput from "./SelectInput";
 import SelectLabel from "./SelectLabel";
 import SelectIcon from "./SelectIcon";
 import SelectDropdown from "./SelectDropdown";
 import SelectOption from "./SelectOption";
+import { OPTION } from "@/shared/types";
 
 interface SelectRootProps {
   children: ReactNode;
   name: string;
-  onValueChange?: (value: string | null) => void;
+  onValueChange?: (option: OPTION) => void;
   value?: string | null;
-  options?: SelectOptionType[];
+  options?: OPTION[];
 }
 
 const SelectRoot = ({
@@ -65,9 +63,9 @@ const SelectRoot = ({
 
   const { getReferenceProps, getFloatingProps } = useInteractions([dismiss]);
 
-  const handleValueChange = (value: string | null) => {
-    setSelectedValue(value);
-    onValueChange?.(value);
+  const handleValueChange = (option: OPTION) => {
+    setSelectedValue(option.value);
+    onValueChange?.(option);
   };
 
   // Update selectedValue when value prop changes
@@ -89,6 +87,11 @@ const SelectRoot = ({
     }
   }, [selectedValue, options]);
 
+  const clear = () => {
+    setSelectedValue(null);
+    setInputValue("");
+  };
+
   return (
     <SelectContext.Provider
       value={{
@@ -105,6 +108,7 @@ const SelectRoot = ({
         options,
         getReferenceProps,
         getFloatingProps,
+        clear,
       }}
     >
       <div className="relative w-full">{children}</div>

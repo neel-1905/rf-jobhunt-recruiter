@@ -18,7 +18,7 @@ const AppSidebarMenu = () => {
   return (
     <SidebarMenu className="gap-4">
       {links.map((item) => {
-        const isActive = item.url === pathname;
+        const isActive = pathname.startsWith(item.url);
         return (
           <SidebarMenuItem key={item.title}>
             <SidebarMenuButton
