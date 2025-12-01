@@ -20,4 +20,5 @@ export const ICONS = {
   sort: "/icons/sort.svg",
   export: "/icons/export.svg",
   chevronDown: "/icons/chevronDown.svg",
+  clock: "/icons/clock.svg",
 };

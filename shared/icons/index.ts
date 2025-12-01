@@ -14,3 +14,4 @@ export { default as SearchIcons } from "./SearchIcons";
 export { default as FilterIcon } from "./FilterIcon";
 export { default as SortIcon } from "./SortIcon";
 export { default as ExportIcon } from "./ExportIcon";
+export { default as ClockIcon } from "./ClockIcon";

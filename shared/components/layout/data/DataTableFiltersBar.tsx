@@ -4,9 +4,8 @@ import { FilterConfig } from "@/features/filters/domain/filter.types";
 import { useFilters } from "@/features/filters/hooks/useFilters";
 import FilterButton from "@/features/filters/ui/FilterButton";
 import FiltersSidebar from "@/features/filters/ui/FiltersSidebar";
-import SearchFilter from "@/features/filters/ui/inputs/SearchFilter";
+import SearchInput from "@/features/filters/ui/inputs/SearchInput";
 import { SortIcon, ExportIcon } from "@/shared/icons";
-import { debounce, parseAsString, useQueryState } from "nuqs";
 import { useState } from "react";
 
 type DataTableFiltersBarProps = {
@@ -25,7 +24,7 @@ const DataTableFiltersBar = ({ filters }: DataTableFiltersBarProps) => {
   });
   return (
     <div className="flex-center flex-wrap gap-5 w-full">
-      <SearchFilter
+      <SearchInput
         value={tableFilters.search}
         onChange={(value) => set.search(value)}
         className="flex-1"

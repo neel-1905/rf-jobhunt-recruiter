@@ -1,4 +1,6 @@
 import { cn } from "@/shared/lib/utils";
+import { LoadingFeedback } from "../feedback";
+import { Activity } from "react";
 
 type PrimaryButtonProps = {
   children: React.ReactNode;
@@ -18,6 +20,43 @@ const PrimaryOutlineButton = (props: PrimaryButtonProps) => {
     >
       {children}
     </button>
+  );
+};
+
+type PrimaryOutlineButtonWithLoadingProps = PrimaryButtonProps & {
+  isLoading?: boolean;
+  loadingText?: string;
+};
+
+export const PrimaryOutlineButtonWithLoading = (
+  props: PrimaryOutlineButtonWithLoadingProps
+) => {
+  const {
+    isLoading = false,
+    loadingText,
+    children,
+    disabled,
+    type = "submit",
+    ...rest
+  } = props;
+
+  return (
+    <PrimaryOutlineButton
+      disabled={isLoading || disabled}
+      type={type}
+      {...rest}
+    >
+      {isLoading ? (
+        <>
+          <LoadingFeedback />
+          <Activity mode={loadingText ? "visible" : "hidden"}>
+            <span>{loadingText}</span>
+          </Activity>
+        </>
+      ) : (
+        children
+      )}
+    </PrimaryOutlineButton>
   );
 };
 

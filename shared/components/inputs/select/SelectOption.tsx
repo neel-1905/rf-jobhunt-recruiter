@@ -6,16 +6,27 @@ interface SelectOptionProps {
   value: string;
   label: string;
   className?: string;
+  shouldClear?: boolean;
 }
 
-const SelectOption = ({ value, label, className }: SelectOptionProps) => {
-  const { setSelectedValue, setIsOpen, selectedValue, setInputValue } =
+const SelectOption = ({
+  value,
+  label,
+  className,
+  shouldClear,
+}: SelectOptionProps) => {
+  const { setSelectedValue, setIsOpen, selectedValue, setInputValue, clear } =
     useSelectContext();
+  useSelectContext();
 
   const handleClick = () => {
-    setSelectedValue(value);
+    setSelectedValue({ value, label });
     setIsOpen(false);
     setInputValue(label);
+    if (shouldClear) {
+      clear();
+      return null;
+    }
   };
 
   const isSelected = selectedValue === value;
