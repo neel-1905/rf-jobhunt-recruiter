@@ -288,6 +288,18 @@
       @apply text-xl font-medium text-foreground/80 mb-6;
     }
   }
+
+  .skill-badge {
+    @apply border border-primary rounded-full py-3 px-3.5 flex-center gap-3;
+
+    &[data-selected="true"] {
+      @apply bg-primary text-background;
+    }
+
+    &[data-selected="false"] {
+      @apply bg-background text-primary;
+    }
+  }
 }
 
 @layer base {

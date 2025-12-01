@@ -2,6 +2,7 @@ import { useFormContext } from "react-hook-form";
 import { JobFormSchema } from "../../lib/job.validations";
 import { Select } from "@/shared/components/inputs";
 import { SearchIcons } from "@/shared/icons";
+import SkillBadge from "@/features/skill/ui/SkillBadge";
 
 const JobSkills = () => {
   const form = useFormContext<JobFormSchema>();
@@ -14,7 +15,6 @@ const JobSkills = () => {
   ];
 
   const addSkill = (skill: { value: string; label: string }) => {
-    console.log("adding", skill);
     const exists = skills.some((s) => s.name === skill.label);
     if (exists) return;
 
@@ -53,11 +53,9 @@ const JobSkills = () => {
         </Select.Dropdown>
       </Select.Root>
 
-      <div className="mt-5">
+      <div className="mt-5 flex gap-2.5">
         {skills.map((skill) => (
-          <div key={skill.name} className="chip">
-            {skill.name}
-          </div>
+          <SkillBadge key={skill.name} name={skill.name} isSelected={true} />
         ))}
       </div>
     </section>
