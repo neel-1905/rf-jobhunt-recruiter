@@ -6,7 +6,7 @@ import Link from "next/link";
 const DashboardCta = () => {
   return (
     <Link href={`/jobs/new`}>
-      <PrimaryButton className="w-36 h-10.5 text-sm">
+      <PrimaryButton className="cta-btn">
         <PlusIcon /> New Job
       </PrimaryButton>
     </Link>

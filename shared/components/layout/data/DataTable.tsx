@@ -22,12 +22,14 @@ interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
   onRowSelectionChange?: (selectedRows: TData[]) => void;
+  onDoubleClickRow?: (row: TData) => void;
 }
 
 function DataTable<TData, TValue>({
   columns,
   data,
   onRowSelectionChange,
+  onDoubleClickRow,
 }: DataTableProps<TData, TValue>) {
   const [rowSelection, setRowSelection] = React.useState<RowSelectionState>({});
 
@@ -61,7 +63,7 @@ function DataTable<TData, TValue>({
               {headerGroup.headers.map((header) => {
                 return (
                   <TableHead
-                    className="table-header! first:rounded-t-primary last:rounded-b-primary"
+                    className="table-header! first:rounded-tl-primary last:rounded-tr-primary"
                     key={header.id}
                   >
                     {header.isPlaceholder
@@ -82,7 +84,8 @@ function DataTable<TData, TValue>({
               <TableRow
                 key={row.id}
                 data-state={row.getIsSelected() && "selected"}
-                className="hover:bg-table-header cursor-pointer"
+                className="hover:bg-accent cursor-pointer"
+                onDoubleClick={() => onDoubleClickRow?.(row.original)}
               >
                 {row.getVisibleCells().map((cell) => (
                   <TableCell className="table-cell" key={cell.id}>

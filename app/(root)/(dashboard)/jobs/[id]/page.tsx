@@ -3,6 +3,7 @@ import JobDetails from "@/features/job/ui/details/JobDetails";
 import JobDetailsCta from "@/features/job/ui/details/JobDetailsCta";
 import { AppHeader } from "@/shared/components/layout";
 import DetailsSection from "@/shared/components/layout/DetailsSection";
+import Link from "next/link";
 
 type Props = {
   params: Promise<{
@@ -23,9 +24,11 @@ const page = async (props: Props) => {
 
       <DetailsSection details={jobDetails}>
         <div className="bg-primary/20 w-full flex-center p-2 rounded-b-primary">
-          <span className="text-primary underline text-xsm font-medium">
-            10 Applied Candidates
-          </span>
+          <Link href={`/jobs/${id}/candidates`}>
+            <span className="text-primary underline text-xsm font-medium">
+              10 Applied Candidates
+            </span>
+          </Link>
         </div>
       </DetailsSection>
 
