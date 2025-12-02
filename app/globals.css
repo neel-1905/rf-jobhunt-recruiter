@@ -43,7 +43,6 @@
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
   --sidebar-text-inactive: oklch(0.4202 0 0);
-  --table-header: oklch(0.9741 0.013155 5.7974);
   --table-header-border: oklch(0.9293 0.037 7.49);
 
   --section-bg-secondary: oklch(98.92% 0.016 160.64);
@@ -91,7 +90,6 @@
   --sidebar-border: oklch(0.92 0.004 286.32);
   --sidebar-ring: oklch(34.92% 0.105 16.82);
   --sidebar-text-inactive: oklch(0.4202 0 0);
-  --table-header: oklch(0.9741 0.013155 5.7974);
   --table-header-border: oklch(0.9293 0.037 7.49);
 
   --section-bg-secondary: oklch(34.92% 0.105 16.82 / 0.08);
@@ -141,7 +139,6 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-text-inactive: var(--sidebar-text-inactive);
-  --color-table-header: var(--table-header);
   --color-table-header-border: var(--table-header-border);
 
   /* custom colors */
@@ -194,7 +191,7 @@
 }
 
 @utility table-header {
-  @apply p-4 font-medium text-xsm! text-primary bg-table-header;
+  @apply p-4 font-medium text-xsm! text-primary bg-primary/10;
 }
 
 @utility table-cell {
@@ -211,6 +208,10 @@
 
 @utility paragraph {
   @apply text-sm/5.5 text-muted-foreground-secondary;
+}
+
+@utility cta-btn {
+  @apply px-7.5 h-10.5 bg-background;
 }
 
 @layer base {
@@ -274,7 +275,7 @@
       @apply text-2xl font-medium;
     }
     p {
-      @apply text-base text-muted-foreground font-medium;
+      @apply text-sm text-muted-foreground-secondary font-normal;
     }
   }
 
@@ -331,7 +332,7 @@
       @apply flex flex-col gap-2.5;
 
       h2 {
-        @apply text-xsm text-muted-foreground truncate;
+        @apply text-xsm! text-muted-foreground truncate;
       }
 
       h3 {
